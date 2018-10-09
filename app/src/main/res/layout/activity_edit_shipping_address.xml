@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    tools:context=".activities.edit_shipping_address.EditShippingAddressActivity">
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_centerInParent="true"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <EditText
+                android:id="@+id/etAddressTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="5dp"
+                android:hint="Address title"/>
+            <EditText
+                android:id="@+id/etCity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="5dp"
+                android:hint="City"/>
+            <EditText
+                android:id="@+id/etProvince"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="5dp"
+                android:hint="Province"/>
+            <EditText
+                android:id="@+id/etZipCode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="5dp"
+                android:hint="Zip Code"/>
+            <EditText
+                android:id="@+id/etFullAddress"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:gravity="top|left"
+                android:layout_marginVertical="5dp"
+                android:hint="Full Address Title"/>
+            <CheckBox
+                android:id="@+id/cbIsMainShippingAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Jadikan alamat utama"/>
+            <Button
+                android:id="@+id/btnUpdateShippingAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimaryDark"
+                android:textColor="@android:color/white"
+                android:layout_marginVertical="5dp"
+                android:text="Save Changes"/>
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>
