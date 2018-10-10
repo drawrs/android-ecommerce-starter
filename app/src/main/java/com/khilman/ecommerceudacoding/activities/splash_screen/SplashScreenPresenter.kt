@@ -6,6 +6,7 @@ import com.khilman.ecommerceudacoding.utils.MyConstants
 
 class SplashScreenPresenter(val view: SplashScreenView, val pref: SharedPreferences) {
 
+
     fun startTimer(interval: Long){
         val handler = Handler()
         handler.postDelayed(Runnable {
