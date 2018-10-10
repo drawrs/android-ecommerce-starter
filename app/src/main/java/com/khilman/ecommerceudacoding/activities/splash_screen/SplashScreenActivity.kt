@@ -3,6 +3,7 @@ package com.khilman.ecommerceudacoding.activities.splash_screen
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.khilman.ecommerceudacoding.R
+import com.khilman.ecommerceudacoding.activities.home.HomeActivity
 import com.khilman.ecommerceudacoding.activities.intro.IntroActivity
 import com.khilman.ecommerceudacoding.activities.login.LoginActivity
 import com.khilman.ecommerceudacoding.activities.register.RegisterActivity
@@ -32,7 +33,7 @@ class SplashScreenActivity : AppCompatActivity(), SplashScreenView {
         startActivity<LoginActivity>()
     }
 
-    override fun navigateToRegister() {
-        startActivity<RegisterActivity>()
+    override fun navigateToHome() {
+        startActivity<HomeActivity>()
     }
 }
