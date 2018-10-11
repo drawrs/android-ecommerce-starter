@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <network-security-config>
 <domain-config cleartextTrafficPermitted="true">
-    <domain includeSubdomains="true">YOUR_DOMAIN</domain>
-    <domain includeSubdomains="true">ANOTHER_DOMAIN</domain>
+    <domain includeSubdomains="true">10.0.2.2</domain>
     <!-- Contoh -->
     <domain includeSubdomains="true">www.khilman.com</domain>
 </domain-config>
