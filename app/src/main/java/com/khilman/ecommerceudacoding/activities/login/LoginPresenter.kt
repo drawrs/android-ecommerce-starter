@@ -8,6 +8,7 @@ class LoginPresenter(val view: LoginView,
                      val pref: SharedPreferences): LoginInteractor.OnLoginFinished {
 
     fun attempUserLogin(email: String, password: String){
+        view.showProgress()
         interactor.attempUserLogin(email, password, this)
     }
 

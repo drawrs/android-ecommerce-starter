@@ -46,7 +46,7 @@ class LoginInteractor {
 
     fun saveLoginStateToCache(pref: SharedPreferences?, isRememberLogin: Boolean) {
         //todo: save state login to SharedPreferences
-        pref?.edit()?.putBoolean(MyConstants.PREF_IS_AUTHENTICATED, isRememberLogin)?.apply()
+        pref?.edit()?.putBoolean(MyConstants.PREF_IS_LOGGINED, isRememberLogin)?.commit()
     }
 
     fun saveUserProfileToCache(pref: SharedPreferences?, userId: String, email: String, firstName: String, lastName: String) {
