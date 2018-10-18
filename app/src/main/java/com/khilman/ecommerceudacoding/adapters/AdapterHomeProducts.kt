@@ -6,11 +6,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.khilman.ecommerceudacoding.R
+import com.khilman.ecommerceudacoding.activities.product_detail.ProductDetailActivity
 import com.khilman.ecommerceudacoding.network.model.home_products_response.DataItemProduct
+import com.khilman.ecommerceudacoding.utils.MyConstants
 import com.khilman.ecommerceudacoding.utils.MyHelpers
 import com.khilman.www.formchecklistapp.network.InitRetrofit
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_product.view.*
+import org.jetbrains.anko.sdk25.coroutines.onClick
+import org.jetbrains.anko.startActivity
 
 class AdapterHomeProducts(val context: Context, val homeProducts: List<DataItemProduct?>?): RecyclerView.Adapter<AdapterHomeProducts.ViewHolder>() {
 
@@ -25,8 +29,11 @@ class AdapterHomeProducts(val context: Context, val homeProducts: List<DataItemP
 
     override fun onBindViewHolder(holder: AdapterHomeProducts.ViewHolder, position: Int) {
         val product = homeProducts?.get(position)
-
         holder.bind(product)
+
+        holder.itemView.onClick {
+            context.startActivity<ProductDetailActivity>(MyConstants.PRODUCT_ID to product?.id.toString())
+        }
     }
 
     inner class ViewHolder(val view: View) : RecyclerView.ViewHolder(view)  {

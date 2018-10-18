@@ -31,6 +31,8 @@ import com.khilman.ecommerceudacoding.network.model.home_products_response.DataI
 import com.khilman.ecommerceudacoding.network.model.home_promotions_response.DataItemPromotion
 import com.khilman.ecommerceudacoding.utils.MyConstants
 import com.khilman.ecommerceudacoding.utils.SessionManager
+import com.khilman.ecommerceudacoding.utils.hide
+import com.khilman.ecommerceudacoding.utils.show
 import com.khilman.www.formchecklistapp.network.InitRetrofit
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
@@ -40,6 +42,7 @@ import org.jetbrains.anko.support.v4.onRefresh
 
 class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, BaseSliderView.OnSliderClickListener,
         ViewPagerEx.OnPageChangeListener, HomeView {
+
 
     private lateinit var presenter: HomePresenter
     private lateinit var pref: SharedPreferences
@@ -60,34 +63,30 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         nav_view.setNavigationItemSelectedListener(this)
         pref = SessionManager(this).getInstance()
         presenter = HomePresenter(this, HomeInteractor())
-
         presenter.getHomeData()
     }
+
     private fun initEvent() {
         swipeRefreshLayout.onRefresh {
             presenter.getHomeData()
         }
         etSearchBox.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-
-            }
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
 
             override fun afterTextChanged(s: Editable?) {
                 val keyword = s.toString()
                 //todo: get home product with keyword
-                presenter.getHomeData(keyword)
+                presenter.getHomeProducts(keyword)
                 //todo: show hide other section
                 if (keyword.length > 0) {
-                    sectionSlider.visibility = View.GONE
-                    sectionCategories.visibility = View.GONE
+                    sectionSlider.hide()
+                    sectionCategories.hide()
                 } else {
-                    sectionSlider.visibility = View.VISIBLE
-                    sectionCategories.visibility = View.VISIBLE
-                    presenter.getHomeData(keyword)
+                    sectionSlider.show()
+                    sectionCategories.show()
+                    //presenter.getHomeProducts(keyword)
                 }
             }
         })
@@ -187,6 +186,12 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         recyclerViewListTank.isNestedScrollingEnabled = true
     }
 
+    override fun showEmptyNotice() {
+        tvEmptyProductsNotice.show()
+    }
+    override fun hideEmptyNotice() {
+        tvEmptyProductsNotice.hide()
+    }
     override fun navigateToLogin() {
         startActivity(intentFor<LoginActivity>().newTask().clearTask())
     }

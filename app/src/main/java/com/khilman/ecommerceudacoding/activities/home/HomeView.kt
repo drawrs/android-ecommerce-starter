@@ -12,4 +12,6 @@ interface HomeView {
     fun showCategories(promotionCategories: List<DataItemCategory?>?)
     fun showProducts(homeProducts: List<DataItemProduct?>?)
     fun navigateToLogin()
+    fun hideEmptyNotice()
+    fun showEmptyNotice()
 }

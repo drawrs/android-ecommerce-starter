@@ -12,12 +12,20 @@ class HomePresenter(val view: HomeView, val interactor: HomeInteractor) : HomeIn
     private var isHomePromotionsReady = false
     private var isHomeCategoriesReady = false
 
-    fun getHomeData(searchKeyword: String? = null){
+    fun getHomeData(){
         view.showProgress()
+        this.getHomeSlider()
+        this.getHomeCategories()
+        this.getHomeProducts()
+    }
+    fun getHomeSlider(){
         interactor.getPromotions(this)
+    }
+    fun getHomeCategories(){
         interactor.getCategories(this)
+    }
+    fun getHomeProducts(searchKeyword: String? = null){
         interactor.getHomeProducts(searchKeyword, this)
-
     }
     fun isEverythingReady(): Boolean {
         return isHomePromotionsReady && isHomeCategoriesReady && isHomeProductsReady
@@ -59,6 +67,12 @@ class HomePresenter(val view: HomeView, val interactor: HomeInteractor) : HomeIn
         view.showProducts(data)
         if (isEverythingReady()) {
             view.hideProgress()
+        }
+        //todo: if search was zero result
+        if (data?.size!! <= 0){
+            view.showEmptyNotice()
+        } else {
+            view.hideEmptyNotice()
         }
     }
 
